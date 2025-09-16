@@ -1,41 +1,46 @@
 import { Tabs } from 'expo-router'
 import { Ionicons } from "@expo/vector-icons"
+import { SeekColorProvider } from '../../context/SeekColorContext';
 
-export default function GoalsLayout() {
-
+export default function SeekColorLayout() {
+  
   return (
+  <SeekColorProvider>
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: 'black',
         tabBarInactiveTintColor: 'grey',
-      }}>
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Your Goals',
+          title: 'Explore Colors',
           tabBarIcon: ({ focused }) => (
             <Ionicons 
               size={24} 
-              name={focused ? 'home' : 'home-outline'} 
+              name={focused ? 'color-palette' : 'color-palette-outline'} 
               color="black"
             />
           ),
         }}
       />
+
       <Tabs.Screen
-        name="create"
+        name="favorites"
         options={{
-          title: 'Create Goal',
+          title: 'Favorites',
           tabBarIcon: ({ focused }) => (
             <Ionicons 
               size={24} 
-              name={focused ? 'create' : 'create-outline'} 
+              name={focused ? 'heart' : 'heart-outline'} 
               color="black"
             />
           ),
         }}
       />
     </Tabs>
+    </SeekColorProvider>
   )
 }
